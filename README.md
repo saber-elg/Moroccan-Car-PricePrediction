@@ -25,8 +25,10 @@ If you're interested in viewing the complete code, please contact me directly. D
 
 ## Architecture
 
-<img width="4890" height="3090" alt="Image" src="https://github.com/user-attachments/assets/cb3490b1-5a71-4c35-8517-c2abc98c585b" />
+```
+Data Source (Avito) → Web Scraping → Data Storage → EDA & Preprocessing → ML Model → Web Application
 
+```
 This project follows a standard data engineering workflow:
 1. **Data Ingestion**: Automated web scraping using Selenium
 2. **Data Storage**: CSV-based data lake for raw and processed data

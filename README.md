@@ -1,8 +1,12 @@
-# Moroccan Car Price Prediction
+# 🚗 Moroccan Car Price Prediction
 
 ## Overview
 
 An end-to-end machine learning solution for predicting vehicle prices in the Moroccan automotive market. This project implements a complete data engineering pipeline—from web scraping and ETL processes to model training and deployment—delivering real-time price predictions through an interactive web application.
+
+## 🔒 Accessing the Code
+
+If you're interested in viewing the complete code, please contact me directly. Due to confidentiality reasons, the full repository cannot be shared publicly, as the site does not allow data scraping. Since I am responsible for the scraped data, I will provide access privately upon request.
 
 ## Table of Contents
 
@@ -21,9 +25,7 @@ An end-to-end machine learning solution for predicting vehicle prices in the Mor
 
 ## Architecture
 
-```
-Data Source (Avito) → Web Scraping → Data Storage → EDA & Preprocessing → ML Model → Web Application
-```
+<img width="4890" height="3090" alt="Image" src="https://github.com/user-attachments/assets/cb3490b1-5a71-4c35-8517-c2abc98c585b" />
 
 This project follows a standard data engineering workflow:
 1. **Data Ingestion**: Automated web scraping using Selenium
@@ -210,10 +212,8 @@ This project is available for educational and demonstration purposes. Please ens
 
 ## Contact
 
-**Soukaina El Hadifi**
+**Mohamed Saber Elguelta**
 - Email: medsaberelguelta@gmail.com
-- LinkedIn: [Add your LinkedIn profile]
-- GitHub: [Add your GitHub profile]
 
 ---
 

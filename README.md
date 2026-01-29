@@ -1,65 +1,220 @@
-# 🚗 Moroccan Car Price Prediction 📈
+# Moroccan Car Price Prediction
 
-## 📜 Project Overview
-Moroccan Vehicle Price Prediction is a data-driven project designed to predict vehicle prices in the Moroccan market. The project analyzes data scraped from Avito, leveraging machine learning and a user-friendly web application to deliver accurate price predictions for a wide range of car models and brands.
+## Overview
 
+An end-to-end machine learning solution for predicting vehicle prices in the Moroccan automotive market. This project implements a complete data engineering pipeline—from web scraping and ETL processes to model training and deployment—delivering real-time price predictions through an interactive web application.
 
-## 🎯 Key Objectives
+## Table of Contents
 
- 1. **📥 Data Extraction & Parsing:**
-   - Scrape car listings from Avito using Selenium.
-   - Parse and clean the HTML data using BeautifulSoup to extract relevant features (Price, Fiscal Power, Model Year, Gearbox , etc.)
+- [Architecture](#architecture)
+- [Features](#features)
+- [Technology Stack](#technology-stack)
+- [Data Pipeline](#data-pipeline)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Model Performance](#model-performance)
+- [Future Enhancements](#future-enhancements)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
- 2. **🏗 Data Preparation:**
-   - Clean, analyze, and preprocess the extracted data using Pandas to ensure it is ready for machine learning.
+## Architecture
 
- 3. **🤖 Machine Learning Model:**
-   - Train a predictive model using scikit-learn to estimate car prices based on user input features.
+```
+Data Source (Avito) → Web Scraping → Data Storage → EDA & Preprocessing → ML Model → Web Application
+```
 
- 4. **🌐 Streamlit Web Application:**
-   - Develop an interactive user interface using Streamlit.
-   - Allow users to input details of any car model and receive price predictions in real-time.
+This project follows a standard data engineering workflow:
+1. **Data Ingestion**: Automated web scraping using Selenium
+2. **Data Storage**: CSV-based data lake for raw and processed data
+3. **Data Transformation**: ETL processes with Pandas for cleaning and feature engineering
+4. **Model Development**: Scikit-learn pipeline for training and validation
+5. **Model Deployment**: Streamlit-based web application for inference
 
+## Features
 
-## ⚙ Tech Stack :
+- **Automated Data Collection**: Dynamic web scraping from Avito marketplace with configurable pagination
+- **Robust ETL Pipeline**: Data cleaning, validation, and transformation processes
+- **Feature Engineering**: Extraction and encoding of categorical and numerical features
+- **ML Model**: Regression model for price prediction with serialization support
+- **Interactive UI**: User-friendly Streamlit interface for real-time predictions
+- **Scalable Architecture**: Modular design supporting easy maintenance and updates
 
- - **Selenium** : For extracting data from the website.
- - **BeautifulSoup**: For parsing and extracting data from HTML.
- - **Pandas** : For data analysis and cleaning.
- - **Scikit-learn** : For creating the prediction model.
- - **Streamlit** : For building the web application and deploying the model.
- - **pickle** : For saving and loading the machine learning model.
+## Technology Stack
 
+### Data Engineering & Processing
+- **Python 3.x**: Core programming language
+- **Pandas**: Data manipulation and analysis
+- **NumPy**: Numerical computing
 
-## 🚀 Getting Started :
+### Web Scraping & Automation
+- **Selenium WebDriver**: Browser automation for dynamic content scraping
+- **BeautifulSoup4**: HTML parsing and data extraction
+- **WebDriver Manager**: Automated driver management
 
-1. Clone this repository to your local machine.
-2. Install dependencies mentioned in `the requirement.txt` file.
-2. Run the web application in the terminal with the following command: `streamlit run app.py`.
+### Machine Learning
+- **Scikit-learn**: Model training, evaluation, and preprocessing
+- **Pickle**: Model serialization and persistence
 
-   #### Running the application will:
+### Application & Deployment
+- **Streamlit**: Web application framework
+- **Requests**: HTTP library for API calls
 
-   - Execute the scraping script to collect data.
-   - save the data extracted on the `data.csv` file .
-   - Clean and analyze the data using the `analyse.ipynb` Notebook.
-   - Train and evaluate the prediction model.
-   - Save and load the model with pickel .
-   - Provide the prediction result through the web application.
+## Data Pipeline
+
+### 1. Data Extraction
+```python
+# Automated scraping from Avito marketplace
+- Target: Vehicle listings with detailed specifications
+- Method: Selenium + BeautifulSoup for dynamic content handling
+- Output: Raw data stored in data.csv
+```
+
+### 2. Data Transformation
+```python
+# Feature extraction and engineering
+- Cleaning: Handle missing values, outliers, and data type conversions
+- Encoding: Categorical variable transformation (One-Hot Encoding)
+- Features: Fiscal Power, Model Year, Mileage, Fuel Type, Transmission, Condition
+```
+
+### 3. Model Training & Evaluation
+```python
+# Supervised learning for price prediction
+- Algorithm: Regression (configured in analyse.ipynb)
+- Validation: Train-test split with performance metrics
+- Persistence: Serialized model using pickle
+```
+
+## Installation
+
+### Prerequisites
+- Python 3.8 or higher
+- Chrome/Chromium browser
+- pip package manager
+
+### Setup
+
+1. **Clone the repository**
+```bash
+git clone <repository-url>
+cd "Moroccan Car Price Prediction"
+```
+
+2. **Create a virtual environment** (recommended)
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+3. **Install dependencies**
+```bash
+pip install -r requirement.txt
+```
+
+4. **Verify installation**
+```bash
+python -c "import streamlit; import selenium; import sklearn; print('All dependencies installed successfully')"
+```
+
+## Usage
+
+### Running the Complete Pipeline
+
+#### 1. Data Collection (Optional - if updating dataset)
+```bash
+python scrap.py
+```
+This will scrape vehicle data from Avito and update `data.csv`.
+
+#### 2. Data Analysis & Model Training
+Open and execute `analyse.ipynb` in Jupyter Notebook or JupyterLab:
+```bash
+jupyter notebook analyse.ipynb
+```
+This notebook contains:
+- Exploratory Data Analysis (EDA)
+- Data preprocessing and feature engineering
+- Model training and evaluation
+- Model serialization
+
+#### 3. Launch the Web Application
+```bash
+streamlit run app.py
+```
+Access the application at `http://localhost:8501`
+
+### Using the Prediction Interface
+
+1. Enter the vehicle name or model
+2. Provide vehicle characteristics:
+   - Fiscal Power (Puissance fiscale)
+   - Model Year (Année Modèle)
+   - Mileage (Kilométrage)
+   - Condition (État)
+   - Fuel Type (Carburant)
+   - Transmission (Boîte de vitesses)
+   - First Owner Status (Première main)
+3. Click "Calculate" to get the predicted price
+
+## Project Structure
+
+```
+Moroccan Car Price Prediction/
+│
+├── analyse.ipynb          # EDA, preprocessing, and model training notebook
+├── app.py                 # Streamlit web application
+├── scrap.py               # Web scraping module for data collection
+├── data.csv               # Dataset (raw/processed vehicle data)
+├── requirement.txt        # Project dependencies
+├── README.md              # Project documentation
+└── model.pkl              # Serialized ML model (generated after training)
+```
+
+## Model Performance
+
+The model's performance metrics are documented in `analyse.ipynb`. Key evaluation criteria include:
+- Mean Absolute Error (MAE)
+- Root Mean Squared Error (RMSE)
+- R² Score
+
+*(Note: Update this section with actual metrics after model training)*
+
+## Future Enhancements
+
+- [ ] Implement automated data pipeline scheduling (Apache Airflow)
+- [ ] Add data quality monitoring and validation
+- [ ] Integrate cloud storage (AWS S3/Azure Blob Storage)
+- [ ] Implement model versioning and experiment tracking (MLflow)
+- [ ] Deploy to cloud platforms (AWS/Azure/GCP)
+- [ ] Add API endpoints for programmatic access
+- [ ] Implement real-time price tracking and alerts
+- [ ] Expand to additional vehicle marketplaces
+- [ ] Add advanced feature engineering (NLP for descriptions)
+- [ ] Implement ensemble methods for improved accuracy
+
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is available for educational and demonstration purposes. Please ensure compliance with Avito's Terms of Service and robots.txt when scraping data.
+
+## Contact
+
+**Soukaina El Hadifi**
+- Email: medsaberelguelta@gmail.com
+- LinkedIn: [Add your LinkedIn profile]
+- GitHub: [Add your GitHub profile]
 
 ---
 
- **Note :** This project is for educational and demonstration purposes. The results may vary depending on the quality and quantity of the extracted data.
-
----
-
-## 🔒 Accessing the Code
-If you're interested in viewing the complete code, please contact me directly. Due to confidentiality reasons, the full repository cannot be shared publicly, as the site does not allow data scraping. Since I am responsible for the scraped data, I will provide access privately upon request.
-
-
-## 👥 Contributors
- - El Hadifi Soukaina
- - El Guelta Mohamed-Saber
-
-## 📧 Contact
-For questions or access to the repository, feel free to reach out: <br>
-- medsaberelguelta@gmail.com <br>
+*Built with Python, Streamlit, and Scikit-learn 

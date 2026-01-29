@@ -214,6 +214,8 @@ This project is available for educational and demonstration purposes. Please ens
 
 **Mohamed Saber Elguelta**
 - Email: medsaberelguelta@gmail.com
+- LinkedIn: [El Guelta Mohamed-Saber](https://linkedin.com/in/mohamed-saber-elguelta)
+- GitHub: [@saber-elg](https://github.com/saber-elg)
 
 ---
 
